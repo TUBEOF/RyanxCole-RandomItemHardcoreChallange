@@ -1,0 +1,8 @@
+name: RyanxCole-RIHC
+prefix: RIHC-Logger
+version: 1.0.0
+author: TUBEOF
+website: https://tubeof.de/
+
+api-version: 1.18
+main: de.tubeof.ryanxcole.rihc.main.RIHC
