@@ -4,6 +4,7 @@ import de.tubeof.ryanxcole.rihc.commands.CMD_Reset;
 import de.tubeof.ryanxcole.rihc.commands.CMD_Timer;
 import de.tubeof.ryanxcole.rihc.data.Data;
 import de.tubeof.ryanxcole.rihc.listeners.ItemInvSelector;
+import de.tubeof.ryanxcole.rihc.listeners.ItemPickUp;
 import de.tubeof.ryanxcole.rihc.listeners.StartItems;
 import de.tubeof.ryanxcole.rihc.tasks.ActionbarTimer;
 import de.tubeof.ryanxcole.rihc.tasks.ChallengeTimer;
@@ -95,6 +96,7 @@ public class RIHC extends JavaPlugin {
         PluginManager pluginManager = Bukkit.getPluginManager();
         pluginManager.registerEvents(new ItemInvSelector(), this);
         pluginManager.registerEvents(new StartItems(), this);
+        pluginManager.registerEvents(new ItemPickUp(), this);
 
         rihcLogger.info("§aListeners have been successfully registered!");
     }

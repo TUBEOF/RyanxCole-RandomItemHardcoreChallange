@@ -33,7 +33,9 @@ public class StartItems implements Listener {
             Inventory inventory = Bukkit.createInventory(null, 27, "§2Wähle 3 Items zum Start");
             for (int i = 0; i < 27; i++) {
                 Material material = getRandomItem();
-                inventory.setItem(i, itemBuilder.simpleItemStack(material, new Random().nextInt(material.getMaxStackSize())));
+                ItemStack itemStack = new ItemStack(material);
+                itemStack.setAmount(new Random().nextInt((material.getMaxStackSize() - 1) + 1) + 1);
+                inventory.setItem(i, itemStack);
 
                 Bukkit.broadcastMessage("" + material + " #" + i);
             }
@@ -55,7 +57,7 @@ public class StartItems implements Listener {
         selected++;
 
         if (selected >= 3) {
-            Bukkit.getScheduler().runTaskLater(RIHC.getInstance(), () -> player.closeInventory(), 1);
+            Bukkit.getScheduler().runTaskLater(RIHC.getInstance(), player::closeInventory, 1);
             player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 2, 1);
             player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_USE, 1, 1);
 
@@ -71,7 +73,6 @@ public class StartItems implements Listener {
         Material[] materials = Material.values();
         int random = new Random().nextInt(materials.length);
         Material material = materials[random];
-        int amount = new Random().nextInt((material.getMaxStackSize() - 1) + 1) + 1;
 
         return (material.isItem() || material.isBlock()) ? material : getRandomItem();
     }
