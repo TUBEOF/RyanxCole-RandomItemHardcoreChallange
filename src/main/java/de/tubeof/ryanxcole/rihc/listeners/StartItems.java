@@ -33,7 +33,7 @@ public class StartItems implements Listener {
             Inventory inventory = Bukkit.createInventory(null, 27, "§2Wähle 3 Items zum Start");
             for (int i = 0; i < 27; i++) {
                 Material material = getRandomItem();
-                inventory.setItem(i, itemBuilder.simpleItemStack(material, new Random().nextInt(material.getMaxStackSize()), 0, null));
+                inventory.setItem(i, itemBuilder.simpleItemStack(material, new Random().nextInt(material.getMaxStackSize())));
 
                 Bukkit.broadcastMessage("" + material + " #" + i);
             }
