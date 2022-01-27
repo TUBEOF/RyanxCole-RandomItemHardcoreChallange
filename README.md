@@ -18,3 +18,8 @@ Limitations:
 3. Stop the server and set the difficulty in `server.properties`
 4. Download the plugin and drop it into your `/plugins` folder
 5. Start the server, done!
+
+# Commands and Permissions
+
+- `/timer (resume/pause/reset)` rihc.timer
+- `/reset` rihc.reset
