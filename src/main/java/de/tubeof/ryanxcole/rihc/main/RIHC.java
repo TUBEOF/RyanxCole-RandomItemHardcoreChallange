@@ -5,11 +5,13 @@ import de.tubeof.ryanxcole.rihc.commands.CMD_Timer;
 import de.tubeof.ryanxcole.rihc.data.Data;
 import de.tubeof.ryanxcole.rihc.listeners.Death;
 import de.tubeof.ryanxcole.rihc.listeners.EnderdragonKill;
-import de.tubeof.ryanxcole.rihc.listeners.ItemInvSelector;
 import de.tubeof.ryanxcole.rihc.listeners.ItemPickUp;
+import de.tubeof.ryanxcole.rihc.listeners.RandomItemsInv;
 import de.tubeof.ryanxcole.rihc.listeners.StartItems;
 import de.tubeof.ryanxcole.rihc.tasks.ActionbarTimer;
 import de.tubeof.ryanxcole.rihc.tasks.ChallengeTimer;
+import de.tubeof.ryanxcole.rihc.tasks.HintsTimer;
+import de.tubeof.ryanxcole.rihc.tasks.RandomItemTimer;
 import de.tubeof.ryanxcole.rihc.utils.basics.RIHCLogger;
 import de.tubeof.ryanxcole.rihc.utils.basics.ChallengeReset;
 import de.tubeof.tubetils.api.cache.CacheContainer;
@@ -29,6 +31,8 @@ public class RIHC extends JavaPlugin {
     private static Data data;
     private static ActionbarTimer actionbarTimer;
     private static ChallengeTimer challengeTimer;
+    private static RandomItemTimer randomItemTimer;
+    private static HintsTimer hintsTimer;
 
     @Override
     public void onLoad() {
@@ -72,8 +76,10 @@ public class RIHC extends JavaPlugin {
 
         rihcLogger = new RIHCLogger();
         data = new Data();
-        actionbarTimer = new ActionbarTimer();
         challengeTimer = new ChallengeTimer(getConfig().getLong("timerTime", 0));
+        actionbarTimer = new ActionbarTimer();
+        randomItemTimer = new RandomItemTimer();
+        hintsTimer = new HintsTimer();
     }
 
     private void registerCacheContainer() {
@@ -96,7 +102,7 @@ public class RIHC extends JavaPlugin {
         rihcLogger.info("§aListeners will be registered ...");
 
         PluginManager pluginManager = Bukkit.getPluginManager();
-        pluginManager.registerEvents(new ItemInvSelector(), this);
+        pluginManager.registerEvents(new RandomItemsInv(), this);
         pluginManager.registerEvents(new StartItems(), this);
         pluginManager.registerEvents(new ItemPickUp(), this);
         pluginManager.registerEvents(new Death(), this);
@@ -136,5 +142,20 @@ public class RIHC extends JavaPlugin {
     @SuppressWarnings("unused")
     public static ChallengeTimer getChallengeTimer() {
         return challengeTimer;
+    }
+
+    @SuppressWarnings("unused")
+    public static ActionbarTimer getActionbarTimer() {
+        return actionbarTimer;
+    }
+
+    @SuppressWarnings("unused")
+    public static RandomItemTimer getRandomItemTimer() {
+        return randomItemTimer;
+    }
+
+    @SuppressWarnings("unused")
+    public static HintsTimer getHintsTimer() {
+        return hintsTimer;
     }
 }
