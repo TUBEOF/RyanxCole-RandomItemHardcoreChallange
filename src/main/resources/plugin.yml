@@ -6,3 +6,14 @@ website: https://tubeof.de/
 
 api-version: 1.18
 main: de.tubeof.ryanxcole.rihc.main.RIHC
+load: STARTUP
+softdepend:
+  - TubeTils
+
+commands:
+  reset:
+    usage: </command>
+    permission: rihc.reset
+  timer:
+    usage: </command>
+    permission: rihc.timer
