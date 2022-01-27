@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -39,6 +40,7 @@ public class StartItems implements Listener {
         ItemStack itemStack = event.getCurrentItem();
         if (itemStack == null || itemStack.getType() == Material.AIR) return;
         if (!event.getView().getTitle().equalsIgnoreCase("§2Wähle 3 Items zum Start")) return;
+        if (inventory.getType() == InventoryType.PLAYER) return;
 
         int selected = selectedItems.get(player.getUniqueId());
         selected++;

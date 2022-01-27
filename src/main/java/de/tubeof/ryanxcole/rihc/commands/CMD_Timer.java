@@ -1,5 +1,6 @@
 package de.tubeof.ryanxcole.rihc.commands;
 
+import de.tubeof.ryanxcole.rihc.data.Data;
 import de.tubeof.ryanxcole.rihc.main.RIHC;
 import de.tubeof.ryanxcole.rihc.tasks.ChallengeTimer;
 import de.tubeof.ryanxcole.rihc.tasks.RandomItemTimer;
@@ -10,6 +11,7 @@ import org.bukkit.entity.Player;
 
 public class CMD_Timer implements CommandExecutor {
 
+    private final Data data = RIHC.getData();
     private final ChallengeTimer challengeTimer = RIHC.getChallengeTimer();
     private final RandomItemTimer randomItemTimer = RIHC.getRandomItemTimer();
 
@@ -32,6 +34,11 @@ public class CMD_Timer implements CommandExecutor {
 
         String arg = args[0];
         if (arg.equalsIgnoreCase("resume")) {
+            if (data.isTimerRunning()) {
+                player.sendMessage("§cTimer läuft bereits!");
+                return true;
+            }
+
             player.sendMessage("§7★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★");
             player.sendMessage("§6§lERKLÄRUNG ...");
             player.sendMessage("§2§lZiel ...");
@@ -45,10 +52,19 @@ public class CMD_Timer implements CommandExecutor {
             challengeTimer.start();
             randomItemTimer.start();
         } else if (arg.equalsIgnoreCase("pause")) {
+            if (!data.isTimerRunning()) {
+                player.sendMessage("§cTimer läuft derzeit nicht!!");
+                return true;
+            }
+
             challengeTimer.stop();
             randomItemTimer.stop();
         } else if (arg.equalsIgnoreCase("reset")) {
+            challengeTimer.stop();
+            randomItemTimer.stop();
             challengeTimer.setTime(0);
+            challengeTimer.start();
+            randomItemTimer.start();
         } else {
             sendUsage(player);
         }
