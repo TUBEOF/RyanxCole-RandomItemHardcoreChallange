@@ -23,7 +23,7 @@ public class HintsTimer {
                     player.sendTitle("§f", "§c/timer resume", 5, 20, 5);
                 });
             }
-            if (!data.isPlayerDied()) {
+            if (data.isPlayerDied()) {
                 Bukkit.getOnlinePlayers().forEach(player -> {
                     player.sendTitle("§f", "§c/reset", 5, 20, 5);
                 });
