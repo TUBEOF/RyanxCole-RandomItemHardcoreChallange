@@ -18,14 +18,14 @@ public class HintsTimer {
 
     public void start() {
         bukkitTask = Bukkit.getScheduler().runTaskTimer(RIHC.getInstance(), () -> {
-            if (!data.isTimerRunning()) {
-                Bukkit.getOnlinePlayers().forEach(player -> {
-                    player.sendTitle("§f", "§c/timer resume", 5, 20, 5);
-                });
-            }
             if (data.isPlayerDied()) {
                 Bukkit.getOnlinePlayers().forEach(player -> {
                     player.sendTitle("§f", "§c/reset", 5, 20, 5);
+                });
+            }
+            else if (!data.isTimerRunning()) {
+                Bukkit.getOnlinePlayers().forEach(player -> {
+                    player.sendTitle("§f", "§c/timer resume", 5, 20, 5);
                 });
             }
         }, 0, 20 * 10);

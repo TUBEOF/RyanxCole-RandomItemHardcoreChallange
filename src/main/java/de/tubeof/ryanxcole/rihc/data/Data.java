@@ -20,6 +20,6 @@ public class Data {
     }
 
     public boolean isPlayerDied() {
-        return isTimerRunning;
+        return playerDied;
     }
 }
