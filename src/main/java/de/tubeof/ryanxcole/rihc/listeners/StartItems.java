@@ -31,12 +31,8 @@ public class StartItems implements Listener {
             selectedItems.put(player.getUniqueId(), 0);
 
             Inventory inventory = Bukkit.createInventory(null, 27, "§2Wähle 3 Items zum Start");
-            for (int i = 0; i < 27; i++) {
-                Material material = getRandomItem();
-                int amount = new Random().nextInt((material.getMaxStackSize() - 1) + 1) + 1;
-                ItemStack itemStack = itemBuilder.simpleItemStack(material, amount);
-
-                inventory.setItem(i, itemStack);
+            for (int slot = 0; slot < 27; slot++) {
+                fillInventory(inventory, slot);
             }
             Bukkit.getScheduler().runTaskLater(RIHC.getInstance(), () -> player.openInventory(inventory), 5);
         }
@@ -68,11 +64,25 @@ public class StartItems implements Listener {
         selectedItems.put(player.getUniqueId(), selected);
     }
 
-    private Material getRandomItem() {
+    private Material getRandomMaterial() {
         Material[] materials = Material.values();
         int random = new Random().nextInt(materials.length);
         Material material = materials[random];
 
-        return (material.isItem() || material.isBlock()) ? material : getRandomItem();
+        return (material.isItem() || material.isBlock()) ? material : getRandomMaterial();
+    }
+
+    private boolean fillInventory(Inventory inventory, int slot) {
+        Material material = getRandomMaterial();
+        int amount = new Random().nextInt((material.getMaxStackSize() - 1) + 1) + 1;
+        ItemStack itemStack = itemBuilder.simpleItemStack(material, amount);
+        inventory.setItem(slot, itemStack);
+
+        // Validate
+        if (inventory.getItem(slot) == null) {
+            return fillInventory(inventory, slot);
+        }
+        Bukkit.broadcastMessage("#" + slot + " A" + amount + " M" + material);
+        return true;
     }
 }

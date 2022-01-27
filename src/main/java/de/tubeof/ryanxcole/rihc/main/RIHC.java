@@ -3,6 +3,8 @@ package de.tubeof.ryanxcole.rihc.main;
 import de.tubeof.ryanxcole.rihc.commands.CMD_Reset;
 import de.tubeof.ryanxcole.rihc.commands.CMD_Timer;
 import de.tubeof.ryanxcole.rihc.data.Data;
+import de.tubeof.ryanxcole.rihc.listeners.Death;
+import de.tubeof.ryanxcole.rihc.listeners.EnderdragonKill;
 import de.tubeof.ryanxcole.rihc.listeners.ItemInvSelector;
 import de.tubeof.ryanxcole.rihc.listeners.ItemPickUp;
 import de.tubeof.ryanxcole.rihc.listeners.StartItems;
@@ -97,6 +99,8 @@ public class RIHC extends JavaPlugin {
         pluginManager.registerEvents(new ItemInvSelector(), this);
         pluginManager.registerEvents(new StartItems(), this);
         pluginManager.registerEvents(new ItemPickUp(), this);
+        pluginManager.registerEvents(new Death(), this);
+        pluginManager.registerEvents(new EnderdragonKill(), this);
 
         rihcLogger.info("§aListeners have been successfully registered!");
     }
