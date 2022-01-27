@@ -1,5 +1,6 @@
 package de.tubeof.ryanxcole.rihc.listeners;
 
+import de.tubeof.ryanxcole.rihc.data.Data;
 import de.tubeof.ryanxcole.rihc.main.RIHC;
 import de.tubeof.ryanxcole.rihc.tasks.ChallengeTimer;
 import de.tubeof.ryanxcole.rihc.tasks.RandomItemTimer;
@@ -14,6 +15,7 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 @SuppressWarnings("unused")
 public class Death implements Listener {
 
+    private final Data data = RIHC.getData();
     private final ChallengeTimer challengeTimer = RIHC.getChallengeTimer();
     private final RandomItemTimer randomItemTimer = RIHC.getRandomItemTimer();
 
@@ -21,12 +23,14 @@ public class Death implements Listener {
     public void onDeath(PlayerDeathEvent event) {
         if (challengeTimer.getTime() == 0) return;
 
+        data.setPlayerDied(true);
         challengeTimer.stop();
         randomItemTimer.stop();
 
         Player death = event.getEntity();
         death.setHealth(20);
         death.setHealthScale(20);
+        death.spigot().respawn();
 
         Bukkit.getOnlinePlayers().forEach(player -> {
             player.setHealth(20);

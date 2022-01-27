@@ -2,6 +2,7 @@ package de.tubeof.ryanxcole.rihc.utils.basics;
 
 import de.tubeof.ryanxcole.rihc.main.RIHC;
 
+@SuppressWarnings("unused")
 public class RIHCLogger {
 
     public RIHCLogger() {}
@@ -15,6 +16,6 @@ public class RIHCLogger {
     }
 
     public void debug(Class<?> paramClass, String message) {
-        RIHC.getInstance().getLogger().fine("[DEBUG] [" + paramClass.getName() + "]§r " + message);
+        RIHC.getInstance().getLogger().info("[DEBUG] [" + paramClass.getName() + "]§r " + message);
     }
 }

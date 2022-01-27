@@ -44,7 +44,7 @@ public class RandomItemTimer {
                     player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 2, 1);
                     player.playSound(player.getLocation(), Sound.BLOCK_CHEST_OPEN, 2, 0.1F);
 
-                    Inventory inventory = new RandomInv("§aWähle bis zu §22 Items", 36).get();
+                    Inventory inventory = new RandomInv("§2Wähle bis zu 2 Items", 36).get();
                     player.openInventory(inventory);
                 });
 
@@ -57,7 +57,7 @@ public class RandomItemTimer {
                         if (!(cycle >= 25)) return;
 
                         Bukkit.getOnlinePlayers().forEach(player -> {
-                            if (!player.getOpenInventory().getTitle().equalsIgnoreCase("§aWähle bis zu §22 Items")) return;
+                            if (!player.getOpenInventory().getTitle().equalsIgnoreCase("§2Wähle bis zu 2 Items")) return;
 
                             if (cycle == 25) player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 2, 0.5F);
                             else if (cycle == 26) player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 2, 0.6F);

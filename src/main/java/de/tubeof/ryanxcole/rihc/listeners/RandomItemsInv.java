@@ -26,7 +26,7 @@ public class RandomItemsInv implements Listener {
         Player player = (Player) event.getWhoClicked();
         ItemStack itemStack = event.getCurrentItem();
         if (itemStack == null || itemStack.getType() == Material.AIR) return;
-        if (!event.getView().getTitle().equalsIgnoreCase("§aWähle bis zu §22 Items")) return;
+        if (!event.getView().getTitle().equalsIgnoreCase("§2Wähle bis zu 2 Items")) return;
 
         int selected = selectedItems.getOrDefault(player.getUniqueId(), 0);
         selected++;

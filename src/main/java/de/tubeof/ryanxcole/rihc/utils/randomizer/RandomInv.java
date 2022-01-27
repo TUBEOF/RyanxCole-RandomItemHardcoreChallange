@@ -41,7 +41,7 @@ public class RandomInv {
 
     private boolean fillInventory(Inventory inventory, int slot) {
         Material material = getRandomMaterial();
-        int amount = new Random().nextInt(1, 64);
+        int amount = (material.getMaxStackSize() == 1) ? 1 : new Random().nextInt(1, material.getMaxStackSize());
         ItemStack itemStack = itemBuilder.simpleItemStack(material, amount);
         inventory.setItem(slot, itemStack);
 
