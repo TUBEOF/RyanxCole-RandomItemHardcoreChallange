@@ -65,7 +65,7 @@ public class RIHC extends JavaPlugin {
     }
 
     private void initialisation() {
-        tubeTilsManager = new TubeTilsManager("[RIHC-Logger] ", getInstance(), 72, true);
+        tubeTilsManager = new TubeTilsManager("[RIHC-Logger] ", getInstance(), 73, true);
 
         rihcLogger = new RIHCLogger();
         data = new Data();
