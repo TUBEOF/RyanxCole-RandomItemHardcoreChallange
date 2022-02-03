@@ -23,3 +23,4 @@ Limitations:
 
 - `/timer (resume/pause/reset)` rihc.timer
 - `/reset` rihc.reset
+- `/settings` rihc.settings
