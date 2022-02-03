@@ -11,7 +11,7 @@ public class ChallengeReset {
 
     public ChallengeReset() {
         worldReset();
-        resetTimer();
+        configReset();
     }
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
@@ -49,13 +49,15 @@ public class ChallengeReset {
         new File(end, "playerdata").mkdirs();
         new File(end, "poi").mkdirs();
         new File(end, "region").mkdirs();
-
-        RIHC.getInstance().getConfig().set("doReset", false);
-        RIHC.getInstance().saveConfig();
     }
 
-    private void resetTimer() {
+    private void configReset() {
         RIHC.getInstance().getConfig().set("timerTime", 0);
+        RIHC.getInstance().getConfig().set("regeneration", false);
+        RIHC.getInstance().getConfig().set("difficulty", "HARD");
+
+
+        RIHC.getInstance().getConfig().set("doReset", false);
         RIHC.getInstance().saveConfig();
     }
 }

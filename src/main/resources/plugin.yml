@@ -1,6 +1,6 @@
 name: RyanxCole-RIHC
 prefix: RIHC-Logger
-version: 1.0.2
+version: 1.0.3
 author: TUBEOF
 website: https://tubeof.de/
 
@@ -17,3 +17,6 @@ commands:
   timer:
     usage: </command>
     permission: rihc.timer
+  settings:
+    usage: </command>
+    permission: rihc.settings

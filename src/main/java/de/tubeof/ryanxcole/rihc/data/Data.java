@@ -22,4 +22,5 @@ public class Data {
     public boolean isPlayerDied() {
         return playerDied;
     }
+
 }
