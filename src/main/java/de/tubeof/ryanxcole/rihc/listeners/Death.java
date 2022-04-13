@@ -7,6 +7,7 @@ import de.tubeof.ryanxcole.rihc.tasks.RandomItemTimer;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Sound;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -19,6 +20,7 @@ public class Death implements Listener {
     private final ChallengeTimer challengeTimer = RIHC.getChallengeTimer();
     private final RandomItemTimer randomItemTimer = RIHC.getRandomItemTimer();
 
+    @SuppressWarnings("ConstantConditions")
     @EventHandler
     public void onDeath(PlayerDeathEvent event) {
         if (challengeTimer.getTime() == 0) return;
@@ -29,7 +31,8 @@ public class Death implements Listener {
 
         Player death = event.getEntity();
         death.setHealth(20);
-        death.setHealthScale(20);
+        death.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(20);
+        death.saveData();
         death.spigot().respawn();
 
         Bukkit.getOnlinePlayers().forEach(player -> {

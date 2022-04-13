@@ -41,6 +41,11 @@ public class RandomInv {
 
     private boolean fillInventory(Inventory inventory, int slot) {
         Material material = getRandomMaterial();
+        if (material.equals(Material.ENDER_EYE) ||
+        material.equals(Material.END_PORTAL_FRAME)) {
+            return fillInventory(inventory, slot);
+        }
+
         int amount;
         try {
             amount = (material.getMaxStackSize() == 1) ? 1 : new Random().nextInt(1, material.getMaxStackSize());

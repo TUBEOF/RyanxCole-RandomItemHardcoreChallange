@@ -27,8 +27,8 @@ public class RandomItemsInv implements Listener {
         Player player = (Player) event.getWhoClicked();
         ItemStack itemStack = event.getCurrentItem();
         if (itemStack == null || itemStack.getType() == Material.AIR) return;
+        if (!inventory.getType().equals(InventoryType.CHEST)) return;
         if (!event.getView().getTitle().equalsIgnoreCase("§2Wähle bis zu 2 Items")) return;
-        if (inventory.getType() == InventoryType.PLAYER) return;
 
         int selected = selectedItems.getOrDefault(player.getUniqueId(), 0);
         selected++;

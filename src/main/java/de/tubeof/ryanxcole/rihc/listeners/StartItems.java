@@ -39,8 +39,8 @@ public class StartItems implements Listener {
         if (!selectedItems.containsKey(player.getUniqueId())) return;
         ItemStack itemStack = event.getCurrentItem();
         if (itemStack == null || itemStack.getType() == Material.AIR) return;
+        if (!inventory.getType().equals(InventoryType.CHEST)) return;
         if (!event.getView().getTitle().equalsIgnoreCase("§2Wähle 3 Items zum Start")) return;
-        if (inventory.getType() == InventoryType.PLAYER) return;
 
         int selected = selectedItems.get(player.getUniqueId());
         selected++;
