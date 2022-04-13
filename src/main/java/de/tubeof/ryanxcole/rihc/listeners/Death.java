@@ -30,8 +30,8 @@ public class Death implements Listener {
         randomItemTimer.stop();
 
         Player death = event.getEntity();
-        death.setHealth(20);
         death.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(20);
+        death.setHealth(20);
         death.saveData();
         death.spigot().respawn();
 
