@@ -41,8 +41,9 @@ public class RandomInv {
 
     private boolean fillInventory(Inventory inventory, int slot) {
         Material material = getRandomMaterial();
-        if (material.equals(Material.ENDER_EYE) ||
-        material.equals(Material.END_PORTAL_FRAME)) {
+        if (material.equals(Material.ENDER_EYE)
+                || material.equals(Material.END_PORTAL_FRAME)
+                || material.equals(Material.ENCHANTED_GOLDEN_APPLE)) {
             return fillInventory(inventory, slot);
         }
 
